@@ -1,0 +1,30 @@
+Checklist ID,Phase,Category,Item,Owner,Status
+PRE-01,Pre-Deployment,QA Sign-off,All P1 and P2 defects closed or risk-accepted by product owner,QA Lead,Pending
+PRE-02,Pre-Deployment,Regression,Full regression suite executed on staging — result ≥95% pass rate,QA Engineer,Pending
+PRE-03,Pre-Deployment,UAT,UAT sign-off received from AP Manager and Vendor representative,QA Lead + BA,Pending
+PRE-04,Pre-Deployment,Integration,"All API integrations (payment, email) tested on staging endpoints",QA + Dev,Pending
+PRE-05,Pre-Deployment,DB Migration,Database schema migrations tested and validated on staging DB,Dev + DBA,Pending
+PRE-06,Pre-Deployment,Rollback,Rollback plan documented and tested; confirm completes within RTO,DevOps + QA,Pending
+PRE-07,Pre-Deployment,Go/No-Go,Go/No-Go sign-off meeting held with all stakeholders,QA Lead + PM,Pending
+CFG-01,Configuration Verification,Environment Variables,"Correct DB_URL, API keys, SMTP config, feature flags set on production",DevOps,Pending
+CFG-02,Configuration Verification,Feature Flags,Production feature flags in correct initial state (enabled/disabled as designed),DevOps,Pending
+CFG-03,Configuration Verification,SSL/TLS,Certificate valid on production domain; HTTP → HTTPS redirect active,DevOps,Pending
+CFG-04,Configuration Verification,DB Connection Pool,Database connection pool configured correctly for production traffic,DBA + DevOps,Pending
+CFG-05,Configuration Verification,File Storage,S3/equivalent access permissions configured; test upload successful,DevOps,Pending
+CFG-06,Configuration Verification,Email Service,Production API key active; test email delivered successfully,DevOps,Pending
+CFG-07,Configuration Verification,Payment Integration,Payment API endpoint pointing to production (not sandbox),DevOps + Dev,Pending
+CFG-08,Configuration Verification,Monitoring,Datadog/CloudWatch dashboards active and alerting configured,DevOps,Pending
+SMK-01,Smoke Test,Vendor Registration,Vendor can register on production URL,QA Engineer,Pending
+SMK-02,Smoke Test,Vendor Login,Vendor login successful on production,QA Engineer,Pending
+SMK-03,Smoke Test,Invoice Submission,Invoice submission (test vendor) completes successfully,QA Engineer,Pending
+SMK-04,Smoke Test,AP Login,AP team login and invoice visible in pending queue,QA Engineer,Pending
+SMK-05,Smoke Test,AP Approval,AP approval executed; status changes to Approved,QA Engineer,Pending
+SMK-06,Smoke Test,Approval Email,Approval notification email received by vendor within 2 minutes,QA Engineer,Pending
+SMK-07,Smoke Test,Payment Forwarding,Payment forwarding API call successful; verified in payment system,QA + Dev,Pending
+SMK-08,Smoke Test,Monthly Report,Monthly report accessible for authorized users,QA Engineer,Pending
+SMK-09,Smoke Test,RBAC Verification,Vendor cannot access /ap/* URLs (403 returned),QA Engineer,Pending
+DOC-01,Documentation Verification,Vendor User Guide,User guide matches actual portal UI; all screenshots current,QA + Tech Writer,Pending
+DOC-02,Documentation Verification,AP User Guide,AP User Guide workflow matches actual AP approval screens,QA + Tech Writer,Pending
+DOC-03,Documentation Verification,API Documentation,API docs reflect all current endpoints; no deprecated endpoints listed as active,QA + Dev,Pending
+DOC-04,Documentation Verification,Error Messages,All error messages in production match approved error message catalogue,QA Engineer,Pending
+DOC-05,Documentation Verification,Privacy Policy,Data retention and privacy policy notice visible and accurate in portal footer,Legal + QA,Pending

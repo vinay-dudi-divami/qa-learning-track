@@ -1,0 +1,8 @@
+Requirement ID,Requirement Statement,Priority,Test Scenario IDs,Test Case IDs,Coverage,Execution Status,Pass/Fail,Defects/Notes
+REQ-01,Vendors can register and log in to the portal,HIGH,"TS-001, TS-002, TS-003, TS-004, TS-005","TC-001, TC-002, TC-003",5 scenarios | 3 test cases,Executed,Pass / Fail / Pass,Vendor Login: TC-002 — Account Lockout not triggering
+REQ-02,Vendors can submit invoices against purchase orders,CRITICAL,"TS-006, TS-007, TS-008, TS-009, TS-010, TS-011, TS-012, TS-013","TC-004, TC-005, TC-006, TC-010, TC-011",8 scenarios | 5 test cases,Executed,Pass / Fail / Fail / Pass / Pass,BUG-VIMP-001: No PO expiry validation; BUG-VIMP-002: Rejection email missing reason
+REQ-03,"The AP team can view, approve, or reject invoices",CRITICAL,"TS-014, TS-015, TS-016, TS-017","TC-007, TC-008",4 scenarios | 2 test cases,Executed,Pass / Pass,
+REQ-04,Approved invoices are forwarded for payment processing,HIGH,"TS-018, TS-019","TC-012, TC-013",2 scenarios | 2 test cases,In Progress,—,
+REQ-05,Both parties receive email notifications on status changes,MEDIUM,"TS-020, TS-021, TS-022, TS-023",TC-014,4 scenarios | 1 test case,Executed,Pass,
+REQ-06,The system generates monthly invoice activity reports,MEDIUM,"TS-024, TS-025",TC-015,2 scenarios | 1 test case,Not Started,—,
+REQ-07,Only authorized users may access the system,CRITICAL,"TS-026, TS-027, TS-028","TC-009, TC-016",3 scenarios | 2 test cases,Executed,Pass / Pass,
