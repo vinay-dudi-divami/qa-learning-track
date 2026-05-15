@@ -1,0 +1,29 @@
+Scenario ID,Requirement ID,Feature Area,Scenario Title,Description,Priority,Test Type
+TS-001,REQ-01,Vendor Registration & Login,Vendor Registration — Happy Path,Vendor can successfully register with valid details and receive a confirmation email,HIGH,Functional
+TS-002,REQ-01,Vendor Registration & Login,Vendor Registration — Validation Failures,"System rejects invalid registration inputs (missing fields, invalid email format, weak password)",HIGH,Functional — Negative
+TS-003,REQ-01,Vendor Registration & Login,Vendor Login — Valid Credentials,Vendor can log in with correct credentials and land on the dashboard,CRITICAL,Functional
+TS-004,REQ-01,Vendor Registration & Login,Vendor Login — Invalid Credentials,System rejects incorrect password with appropriate error; account locks after N failed attempts,CRITICAL,Functional — Negative + Security
+TS-005,REQ-01,Vendor Registration & Login,Vendor Session Management,Session expires after inactivity timeout; user is redirected to login,HIGH,Functional — Security
+TS-006,REQ-02,Invoice Submission,"Invoice Submission — Happy Path (PDF, valid PO)",Vendor successfully submits a valid PDF invoice against an existing PO,CRITICAL,Functional — E2E
+TS-007,REQ-02,Invoice Submission,Invoice Submission — Invalid File Format,System rejects unsupported file formats with a clear error message,HIGH,Functional — Negative
+TS-008,REQ-02,Invoice Submission,Invoice Submission — File Size Exceeded,System rejects files exceeding the maximum allowed size,HIGH,Functional — Boundary Value
+TS-009,REQ-02,Invoice Submission,Invoice Submission — Invalid PO Number,System prevents invoice submission against a non-existent or expired PO,CRITICAL,Functional — Negative
+TS-010,REQ-02,Invoice Submission,Invoice Submission — Duplicate Invoice,System detects and flags/rejects a duplicate invoice submission,CRITICAL,Functional — Negative
+TS-011,REQ-02,Invoice Submission,Invoice Submission — Amount Exceeds PO,System flags or blocks invoice where amount exceeds PO ceiling value,CRITICAL,Functional — Business Rule
+TS-012,REQ-02,Invoice Submission,Invoice — Missing Mandatory Fields,System prevents submission if mandatory invoice fields are empty,HIGH,Functional — Negative
+TS-013,REQ-02,Invoice Submission,Invoice Edit Before Submission,Vendor can edit invoice details prior to final submission,MEDIUM,Functional
+TS-014,REQ-03,AP Approval Workflow,AP Approval — Happy Path,AP reviewer can view and approve an invoice; status changes to Approved,CRITICAL,Functional — E2E
+TS-015,REQ-03,AP Approval Workflow,AP Rejection with Reason,AP reviewer can reject invoice with a mandatory reason; vendor is notified,CRITICAL,Functional + Notification
+TS-016,REQ-03,AP Approval Workflow,AP Workflow — Concurrent Access Control,Two AP reviewers cannot simultaneously action the same invoice,HIGH,Functional — Race Condition
+TS-017,REQ-03,AP Approval Workflow,AP Audit Trail,All AP actions (approve/reject/comment) are logged with timestamp and user ID,HIGH,Functional — Compliance
+TS-018,REQ-04,Payment Processing,Payment Forwarding — Happy Path,Approved invoice is successfully forwarded to payment system with correct payload,CRITICAL,Functional — Integration
+TS-019,REQ-04,Payment Processing,Payment Forwarding — Integration Failure,"System handles payment API unavailability gracefully (queues, alerts, does not silently drop)",CRITICAL,Functional — Negative + Integration
+TS-020,REQ-05,Email Notifications,Email Notification — Invoice Submitted,Vendor receives email notification immediately after invoice submission,HIGH,Functional — Notification
+TS-021,REQ-05,Email Notifications,Email Notification — Invoice Approved,Vendor receives approval email with invoice and payment details,HIGH,Functional — Notification
+TS-022,REQ-05,Email Notifications,Email Notification — Invoice Rejected,Vendor receives rejection email including the rejection reason,HIGH,Functional — Notification
+TS-023,REQ-05,Email Notifications,Email Notification — AP Team Alert,AP team is notified when a new invoice is submitted and awaiting review,MEDIUM,Functional — Notification
+TS-024,REQ-06,Monthly Reports,Monthly Report — Generation,System generates monthly invoice activity report with correct data for the period,HIGH,Functional
+TS-025,REQ-06,Monthly Reports,Monthly Report — Access Control,Only authorized users can access reports; vendors see only their own data,CRITICAL,Functional — RBAC
+TS-026,REQ-07,Access Control,RBAC — Vendor Cannot Access AP Functions,Vendor user cannot access AP approval screens or other vendors data,CRITICAL,Security — RBAC
+TS-027,REQ-07,Access Control,RBAC — AP User Cannot Modify Vendor Data,AP user cannot edit vendor profile or submit invoices on behalf of a vendor,HIGH,Security — RBAC
+TS-028,REQ-07,Access Control,Unauthorized Direct URL Access,Accessing protected URLs without a valid session redirects to login,CRITICAL,Security — Auth

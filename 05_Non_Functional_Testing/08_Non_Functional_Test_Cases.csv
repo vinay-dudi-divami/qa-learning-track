@@ -1,0 +1,23 @@
+Test ID,Category,Sub-type,Test Scenario,Tool,Pass Criteria,Status
+PERF-001,Performance,Load Test,500 concurrent vendors submitting invoices simultaneously,k6 / JMeter,95th percentile response ≤3s; zero errors; CPU <80%,Not Started
+PERF-002,Performance,Stress Test,Ramp to 1000 users; find system breaking point; observe recovery,JMeter,System degrades gracefully; recovers within 60s after load removed,Not Started
+PERF-003,Performance,Spike Test,Sudden spike from 100 to 800 users in 30 seconds,k6,No crash; error rate <2% at spike peak,Not Started
+PERF-004,Performance,Soak Test,200 concurrent users for 4 hours,JMeter,No memory leaks; response time stable; DB connection pool stable,Not Started
+PERF-005,Performance,Login Response,100 concurrent logins,k6,Login API response ≤1 second at 100 concurrent users,Not Started
+PERF-006,Performance,File Upload Throughput,50 concurrent 5 MB invoice uploads,JMeter,Upload completes within 10s; no corruption; server storage 100% consistent,Not Started
+SEC-001,Security,SQL Injection,"Inject SQL payloads in all input fields (login, invoice number, PO number, search)",Manual + OWASP ZAP,All injection attempts return 400/validation error; no SQL executed,Not Started
+SEC-002,Security,XSS,"Input <script>alert(""XSS"")</script> in all text fields; check for reflection in UI",Manual + Burp Suite,Script not executed; input sanitized and displayed as plain text,Not Started
+SEC-003,Security,Broken Authentication,Test brute force without lockout; session token predictability; JWT algorithm confusion (alg:none),Manual,Account lockout enforced; JWT validated; no token reuse,Not Started
+SEC-004,Security,IDOR,Change invoice_id in URL from /invoices/1001 to /invoices/1002 (another vendor),Manual,403 Forbidden; no cross-vendor data exposure,Not Started
+SEC-005,Security,Security Misconfiguration,Check for debug endpoints; verbose error messages; open CORS policy,Manual + OWASP ZAP,No debug info exposed; CORS restricted to known origins,Not Started
+SEC-006,Security,Sensitive Data Exposure,Verify HTTPS enforced; passwords never logged; bank details masked in UI and API,Manual,All traffic over HTTPS; sensitive fields masked in logs,Not Started
+SEC-007,Security,Broken Access Control,Test all RBAC boundaries; unauthenticated API calls; role escalation attempts,Manual,403 on unauthorized; 401 on unauthenticated; all boundaries enforced,Not Started
+A11Y-001,Accessibility,Keyboard Navigation,"All portal features completable using keyboard only (Tab, Enter, Escape)",Manual,No mouse required for any critical workflow,Not Started
+A11Y-002,Accessibility,Screen Reader,"Test with NVDA + Chrome; all labels, buttons, errors, status changes announced correctly",NVDA + Chrome,All interactive elements have meaningful accessible names,Not Started
+A11Y-003,Accessibility,Colour Contrast,Text contrast ratio ≥4.5:1 for normal text; ≥3:1 for large text,axe DevTools,All text passes WCAG AA contrast requirements,Not Started
+A11Y-004,Accessibility,Error Identification,Validation errors programmatically associated with input via aria-describedby / aria-invalid,Manual + axe,Screen readers announce both field label and specific error,Not Started
+A11Y-005,Accessibility,Focus Management,Focus moves to modal on open; returns to trigger element on close,Manual,No focus trap outside modals; no focus loss,Not Started
+A11Y-006,Accessibility,Resizable Text,Zoom browser to 200%; verify no content overflow or functionality loss,Manual,All content accessible at 200% zoom,Not Started
+USA-001,Usability,First-Time User Flow,Complete invoice submission without reading any documentation or guidance,Manual — Exploratory,New user can submit invoice in ≤5 minutes with no errors,Not Started
+USA-002,Usability,Error Recovery,Trigger form validation errors; assess clarity of error messages and recovery path,Manual — Exploratory,"All error messages are specific, actionable, and human-readable",Not Started
+USA-003,Usability,Mobile Responsiveness,"Test all critical workflows on mobile viewport (375px, 768px) in portrait and landscape",BrowserStack + Manual,No horizontal scrolling; all buttons tappable; forms usable on mobile,Not Started
